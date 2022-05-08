@@ -257,7 +257,7 @@ def login(
                 region_name=region,
                 config=client.Config(signature_version=botocore.UNSIGNED),
             )
-
+        principal_arn = principal_arn.split("ADFS-")[1]
         aws_session_token = conn.assume_role_with_saml(
             RoleArn=config.role_arn,
             PrincipalArn=principal_arn,
